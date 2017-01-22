@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".NativeToJsActivity"
+              android:background="#b1b1b1b1">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:background="@android:color/background_light">
+
+            <Button android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="调用js异步关闭窗口"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textSize="20dp"
+                    android:id="@+id/web_native_js_close_btn"
+                    android:elevation="0dp"/>
+
+            <com.sunteng.x5webenginedemo.Tool.X5WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/x5web_native2js"
+                    android:scrollbars="none"
+                    android:background="@android:color/background_light">
+            </com.sunteng.x5webenginedemo.Tool.X5WebView>
+
+            <TextView android:text="X5WebView"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentRight="true"
+                      android:layout_alignParentBottom="true"
+                      android:textColor="@color/colorAccent"
+                      android:textSize="15dp"
+                      android:layout_margin="5dp"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:background="@android:color/background_light">
+
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:gravity="center"
+                      android:background="@android:color/background_light">
+
+                <LinearLayout android:layout_width="fill_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                              android:gravity="center"
+                              android:layout_margin="3dp">
+                    <EditText android:layout_width="match_parent"
+                              android:layout_height="50dp"
+                              android:layout_weight="1"
+                              android:padding="5dp"
+                              android:textColor="@color/colorAccent"
+                              android:background="#eeeeee"
+                              android:hint="输入与web交互的内容"
+                              android:id="@+id/edit_native_js_edit"
+                              android:layout_margin="5dp"
+                              style="@style/Widget.AppCompat.EditText"/>
+                    <Button  android:layout_width="match_parent"
+                             android:layout_height="50dp"
+                             android:layout_weight="3"
+                             android:layout_margin="3dp"
+                             android:id="@+id/bt_native_js_edit"
+                             android:text="提交" />
+                </LinearLayout>
+
+            <LinearLayout android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:gravity="center"
+                          android:layout_margin="3dp">
+                <TextView android:layout_width="0dp"
+                          android:layout_height="50dp"
+                          android:layout_weight="3"
+                          android:textColor="@color/colorAccent"
+                          android:id="@+id/text_native_js_num"/>
+                <Button  android:layout_width="0dp"
+                         android:layout_height="50dp"
+                         android:layout_weight="1"
+                         android:id="@+id/bt_native_js_num_add"
+                         android:text="+" />
+                <Button  android:layout_width="0dp"
+                         android:layout_height="50dp"
+                         android:layout_weight="1"
+                         android:id="@+id/bt_native_js_num_minuse"
+                         android:text="-" />
+            </LinearLayout>
+
+            <TextView
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="可以修改 Native 模块中的内容 \n 验证通过JsBridge进行web和native的交互效果"
+                    />
+
+        </LinearLayout>
+
+
+        <TextView android:text="Native App"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentRight="true"
+                  android:layout_alignParentTop="true"
+                  android:textColor="@color/colorAccent"
+                  android:textSize="15dp"
+                  android:layout_margin="5dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

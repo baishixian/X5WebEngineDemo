@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, user-scale=1">
+    <title></title>
+
+    <style type="text/css" rel="stylesheet">
+        .line{
+            width:100%;
+            background: #000000;
+            height: 5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        input{
+            margin: 5px 5px 5px 5px;
+        }
+        button{
+            margin: 5px 5px 5px 5px;
+        }
+
+    </style>
+</head>
+<body onload="execute()"  >
+
+<input type="text" id="text_msg" style="width:60%; height: auto; padding:  2px 2px 2px 2px; float: left;">
+<button type="button"   onclick="submit()"
+        style="width:20%; height: auto; padding:  2px 2px 2px 2px; float: left;">提交</button>
+
+<input type="text" disabled id="text_num"  style="width:50%; height: auto; padding:  2px 2px 2px 2px; float: left;" value="0">
+<button type="button" onclick="add()" style="width:15%; height: auto; padding:  2px 2px 2px 2px; float: left;">+</button>
+<button type="button" onclick="dec()"  style="width:15%; height: auto; padding:  2px 2px 2px 2px; float: left; clear: right; ">-</button>
+
+<div style="width: 95%;height: 100px;"></div>
+<div id="text_result" style="width:95%">
+    <h3>扫描出的js bridge有：</h3><br>
+</div>
+
+
+</body>
+
+<script type="text/javascript" >
+
+    <!--  call -->
+    function submit (){
+        var msg=document.getElementById("text_msg").value;
+        Android.onSubmit(msg);
+    }
+    function add(){
+
+        document.getElementById("text_num").value++;
+        var num=document.getElementById("text_num").value;
+        Android.onSubmitNum(num);
+    }
+    function dec(){
+        document.getElementById("text_num").value--;
+        var num=document.getElementById("text_num").value;
+        Android.onSubmitNum(num);
+    }
+
+
+    <!-- called by android-->
+    function returnNum( num){
+        var num= Android.getAndroidNum();
+        document.getElementById("text_num").value=num;
+    }
+
+    function returnMsg( ){
+        var msg= Android.getAndroidMsg();
+        document.getElementById("text_msg").value=msg;
+    }
+    
+    function closeWnd( ){
+    	var close = window.confirm("需要关闭当前页面");
+    	if(close){
+    		Android.closeCurrentWindow();
+    	}
+    }
+
+
+
+    function execute()
+    {
+        Android.getManyValue( 1 , false );
+        for (var obj in window) {
+            document.getElementById("text_result").innerHTML+=("<span>"+obj.toString()+"</span><br>");
+            if ("getClass" in window[obj]) {
+                window.alert(obj);
+            }
+        }
+        if(Android != null){
+            document.getElementById("text_result").innerHTML+=("<span>"+Android.toString()+"</span><br>");
+
+        }
+        for (var obj in tbs_bridge) {
+            document.getElementById("text_result").innerHTML+=("<span>"+obj.toString()+"</span><br>");
+            if ("getClass" in window[obj]) {
+                window.alert(obj);
+            }
+        }
+        if(Android != null){
+            document.getElementById("text_result").innerHTML+=("<span>"+Android.toString()+"</span><br>");
+        }
+        if(searchBoxJavaBridge_ !=null){
+            document.getElementById("text_result").innerHTML+=("<span>"+searchBoxJavaBridge_.toString()+"</span><br>");
+        }
+        if(Android != null){
+            document.getElementById("text_result").innerHTML+=("<span>"+Android.toString()+"</span><br>");
+        }
+    }
+</script>
+</html>
